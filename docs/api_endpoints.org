@@ -18,28 +18,29 @@ and can find projects by
 - collaborators
   
 Search API's return all entities that match the filter
-
 * Implementation
-** TODO add model
+** DONE add model
+CLOSED: [2016-12-21 Wed 10:11]
 - [X] route
 - [X] accepts serialized django model
 - [X] translation module for making any needed alterations
   - [X] making the foreign_id accessible
   - [X] uses ForeignSource
-*** relation add
-- [ ] approver passes model with related item
-- [ ] approver also passes natural_key serialization of relations
-- [ ] lookup item by guid
-- [ ] option 1: add those adjacent items with little info
+*** DONE relation add
+CLOSED: [2016-12-21 Wed 10:11]
+- [X] approver passes model with related item
+- [X] approver also passes natural_key serialization of relations
+- [X] lookup item by guid
+- [X] option 1: add those adjacent items with little info
 ** TODO approver translation module
 The information from approver needs to have a translation module since
 the model class definition will not always be the same between approver
 and registry. Further, there may be additional inflows of data so we 
 need to make sure that we can build models from just plain old JSON.
 *** TODO all models deserializable
-- [ ] person
-- [ ] tag
-- [ ] project
+- [X] person
+- [X] tag
+- [X] project
 - [ ] address
 ** TODO dynamic translation module selection
 This is a future enhancement for when we have multiple inflows of data.
@@ -81,6 +82,26 @@ If we plan for the databases getting out of sync we can use translation
 or something so that if registry changes then we can let it, and make
 sure to just update the translation if we need to. This makes bidirectional
 communication more difficult and so we would probably want to do away with it.
+* Security and Oauth
+** Scenario
+Right now anyone can post to the registry if they know what to send
+which they will be able to. We need to implement some sort of security
+or Oauth implementation that will make sure that we are validated
+
+** Implementation
+*** Use a library
+Use a preexisiting Oauth library
+
+*** Decorator check data
+Use a decorator to check some extra info in the post data and
+make sure that we are valid user. At the very least since we are on
+the same host, we can check to make sure that the request came
+from ourselves.
+
+On the vagrant we can make sure that we are using the same sort of
+thing to check for the right ip that the vagrant has. This needs to 
+be in a configuration file.
+
 * Approver implementation
 ** TODO Make sure we have all related dependencies
 - [X] calls the route

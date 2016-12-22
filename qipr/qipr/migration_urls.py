@@ -10,6 +10,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # url(r'^', include('registry.urls', namespace='registry')),
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

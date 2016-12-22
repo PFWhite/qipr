@@ -53,6 +53,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'oauth2_provider',
+    'corsheaders',
     'registry.apps.RegistryConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -63,6 +65,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE_CLASSES = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -74,6 +77,9 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'qipr.urls'
+
+# this should probably just be the approver host
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
