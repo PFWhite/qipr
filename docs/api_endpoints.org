@@ -87,20 +87,16 @@ communication more difficult and so we would probably want to do away with it.
 Right now anyone can post to the registry if they know what to send
 which they will be able to. We need to implement some sort of security
 or Oauth implementation that will make sure that we are validated
-
 ** Implementation
 *** Use a library
 Use a preexisiting Oauth library
 
-*** Decorator check data
-Use a decorator to check some extra info in the post data and
-make sure that we are valid user. At the very least since we are on
-the same host, we can check to make sure that the request came
-from ourselves.
-
-On the vagrant we can make sure that we are using the same sort of
-thing to check for the right ip that the vagrant has. This needs to 
-be in a configuration file.
+** Misc
+- make sure that our application has the flag checked bc trusted
+- get request to authorize with client id and response type
+- redirects to approver with code in url
+- save this code off somewhere
+- use code in api add data requests
 
 * Approver implementation
 ** TODO Make sure we have all related dependencies
